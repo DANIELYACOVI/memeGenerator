@@ -20,17 +20,21 @@
         </datalist>
     </div>
 
+    <div id="gallery"></div>
+
     <div class="container">
         <div id="editor" style="display: none;">
             <label for="color">Text Color:</label>
-            <input type="color" id="color=picker">
+            <input type="color" id="color-picker">
             <input type="text" id="text-input" placeholder="Enter your text here">
         </div>
+        <div>
+            <button id="save" onclick="onSave">Save</button>
+            <a href="#" id="download" onclick="downloadCanvas(this, 'myMeme.png')" download="file-name">Download</a>
+        </div>
+        <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
-    <canvas id="canvas" style="display: none;"></canvas>
-
-    <div id="gallery"></div>
 
     <script src="js/service/meme.service.js"></script>
     <script src="js/service/util.js"></script>

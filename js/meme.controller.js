@@ -2,6 +2,8 @@
 
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
+const colorPicker = document.getElementById('color-picker')
+
 
 var gImgs = [
     { id: generateUniqueId(), url: 'meme-imgs/meme-imgs (square)/2.jpg', keywords: ['funny', 'dog'] },
@@ -111,6 +113,20 @@ function setLineTxt(text){
     meme.lines[meme.selectedLineIdx].txt = text
 }
 
+colorPicker.addEventListener('change', function(event) {
+    updateColor(this.value)
+})
+
+function updateColor(color){
+    const meme = getMemes()
+    meme.lines[meme.selectedLineIdx].color = color
+}
+
+function downloadCanvas(link, filename){
+    link.href = canvas.toDataURL()
+    link.download = filename
+}
+
 function onSearchMems(keyword){
     const filteredImages = gImgs.filter(img => img.keywords.some(key =>key.includes(keyword.toLowerCase())))
 
@@ -129,4 +145,5 @@ function onSearchMems(keyword){
         })
     }
 }
+
 

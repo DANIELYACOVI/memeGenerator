@@ -26,18 +26,6 @@ h1{
     cursor: pointer;
 }
 
-canvas {
-    border: 1px solid lightgrey;
-}
-
-.gallery-image{
-    cursor: pointer;
-    width: 200px;
-    height: auto;
-    margin: 10px;
-    border-radius: .25em;
-}
-
 .search-container{
     text-align: center;
     margin: 20px 0;
@@ -51,3 +39,53 @@ canvas {
     font-size: 16px;
 }
 
+.gallery-image{
+    cursor: pointer;
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    border-radius: .25em;
+}
+
+canvas {
+    border: 1px solid lightgrey;
+}
+
+#download, #save{
+    cursor: pointer;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+}
+
+#download{
+    background-color: #007bff;
+}
+
+#download:hover {
+    background-color: #0056b3;
+}
+
+#save{
+    background-color: #4CAF50;
+}
+
+#save:hover{
+    background-color: #45a049;
+}
+
+
+
+@media (max-width: 600px){
+    .gallery-image{
+        width: 100%;
+    }
+
+    #text-input{
+        width: 80%;
+    }
+}
