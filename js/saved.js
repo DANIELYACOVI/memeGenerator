@@ -27,3 +27,15 @@ function renderSavedMemeHTML(meme) {
     `
 }
 
+function openSocialDialog() {
+    document.getElementById('social-dialog').style.display = 'block';
+}
+
+// Close dialog when clicked outside of it
+window.onclick = function(event) {
+    const dialog = document.getElementById('social-dialog');
+    if (event.target == dialog) {
+        dialog.style.display = 'none';
+    }
+};
+

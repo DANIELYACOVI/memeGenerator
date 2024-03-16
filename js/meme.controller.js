@@ -4,6 +4,7 @@ let isDragging = false
 let selectedLine = null
 let offsetX, offsetY
 
+const gallery = document.getElementById('gallery')
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 const colorPicker = document.getElementById('color-picker')
@@ -194,7 +195,6 @@ function deleteLine() {
         renderMeme()
     }
 }
-
 
 function increaseFontSize(){
     const meme = getMemes()

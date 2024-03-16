@@ -33,3 +33,31 @@ nav a {
     text-decoration: none;
     margin: 0 10px;
 }
+
+
+button#randomMemeBtn {
+    position: absolute;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: .25em;
+    margin-top: 5px;
+}
+
+#canvas {
+    display: block;
+    margin: 20px auto;
+}
+
+.lang {
+    margin-inline-end: 10px;
+}
+
+.lang select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
