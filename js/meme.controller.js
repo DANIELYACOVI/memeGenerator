@@ -69,16 +69,11 @@ function renderMeme() {
         ctx.drawImage(img, 0, 0)
 
         meme.lines.forEach((line, index) => {
-            ctx.fillStyle = line.color
+            ctx.fillStyle = line.color;
             ctx.font = line.size + 'px Arial'
             ctx.textAlign = 'center'
-            ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
 
-            if (index === meme.selectedLineIdx) {
-                ctx.strokeStyle = 'black'
-                ctx.lineWidth = 1
-                ctx.strokeRect(10, 50 + index * 30 - line.size, canvas.width - 20, line.size + 5)
-            }
+            ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
         })
     }
     img.src = gImgs[meme.selectedImgId].url
@@ -259,3 +254,45 @@ function onSearchMems(keyword){
 document.getElementById('title').addEventListener('click', function(){
     window.location.href = 'index.html'
 })
+
+function onSave() {
+    const meme = getMemes()
+    const selectedImgUrl = gImgs[meme.selectedImgId].url
+    
+    const img = new Image()
+    img.onload = function () {
+        const canvasDataURL = canvas.toDataURL()
+        meme.url = canvasDataURL
+        saveMemeToStorage(meme)
+    }
+    img.src = selectedImgUrl
+
+    const dialog = document.getElementById('save-dialog')
+    dialog.showModal()
+
+    const okButton = document.getElementById('close-dialog')
+    okButton.addEventListener('click', function() {
+        window.location.href = 'saved.html'
+    })
+}
+
+function saveMemeToStorage(meme) {
+    const savedMemes = loadFromStorage('savedMemes') || []
+
+    const selectedImgUrl = meme.url
+
+    if (!selectedImgUrl) {
+        console.error('Image URL not found for selectedImgId:', meme.selectedImgId)
+        return
+    }
+
+    const clonedMeme = JSON.parse(JSON.stringify(meme))
+
+    const canvasDataURL = canvas.toDataURL()
+
+    clonedMeme.url = canvasDataURL
+
+    savedMemes.push(clonedMeme)
+
+    saveToStorage('savedMemes', savedMemes)
+}

@@ -12,7 +12,19 @@
 <body>
     <header>
         <h1 id="title" data-trans="title">Meme Generator</h1>
+        <div class="lang">
+            <select onchange="onSetLang(this.value)">
+                <option value="english">🇬🇧 English</option>
+                <option value="hebrew">🇮🇱 עברית</option>
+            </select>
+        </div>
     </header>
+
+    <nav>
+        <a href="index.html" data-trans="gallery">Gallery</a>
+        <a href="saved.html" data-trans="saved">Saved</a>
+        <a href="randomized.html" data-trans="randomized">Randomized</a>
+    </nav>
 
     <div class="search-container">
         <input id="search" list="meme-type" type="text" placeholder="Search..." oninput="onSearchMems(this.value)"
@@ -47,16 +59,22 @@
                 <button class="sticker" onclick="addSticker('❤️')">❤️</button>
             </div>    
             <div>
-                <button id="save" onclick="onSave">Save</button>
+                <button id="save" onclick="onSave()">Save</button>
                 <a href="#" id="download" onclick="downloadCanvas(this, 'myMeme.png')" download="file-name">Download</a>
             </div>
         </div>
             <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
+    <dialog id="save-dialog">
+        <p>Meme saved successfully! 🙌</p>
+        <button id="close-dialog">OK</button>
+    </dialog>
 
+    <script src="js/service/localstorage.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/service/util.js"></script>
+    <script src="js/service/transpage.service.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
 
