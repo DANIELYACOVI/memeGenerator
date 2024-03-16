@@ -1,8 +1,16 @@
 'use strict'
 
+let isDragging = false
+let selectedLine = null
+let offsetX, offsetY
+
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 const colorPicker = document.getElementById('color-picker')
+
+canvas.addEventListener('mousedown', onMouseDown)
+canvas.addEventListener('mousemove', onMouseMove)
+canvas.addEventListener('mouseup', onMouseUp)
 
 
 var gImgs = [
@@ -52,8 +60,8 @@ var gImgs = [
 
 function renderMeme() {
     const meme = getMemes()
-
     const img = new Image()
+    
     img.onload = function () {
         canvas.width = img.width
         canvas.height = img.height
@@ -64,7 +72,13 @@ function renderMeme() {
             ctx.fillStyle = line.color
             ctx.font = line.size + 'px Arial'
             ctx.textAlign = 'center'
-            ctx.fillText(line.txt, canvas.width / 2, 50 + index * 30)
+            ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
+
+            if (index === meme.selectedLineIdx) {
+                ctx.strokeStyle = 'black'
+                ctx.lineWidth = 1
+                ctx.strokeRect(10, 50 + index * 30 - line.size, canvas.width - 20, line.size + 5)
+            }
         })
     }
     img.src = gImgs[meme.selectedImgId].url
@@ -113,13 +127,100 @@ function setLineTxt(text){
     meme.lines[meme.selectedLineIdx].txt = text
 }
 
-colorPicker.addEventListener('change', function(event) {
+function addNewLine() {
+    const meme = getMemes()
+
+    const newLine = {
+        txt: '',
+        size: 20,
+        color: 'red'
+    }
+    
+    meme.lines.push(newLine)
+    
+    meme.selectedLineIdx = meme.lines.length - 1
+    
+    renderMeme()
+
+    document.getElementById('text-input').value = ''
+}
+
+function onMouseDown(event) {
+    const mouseX = event.offsetX
+    const mouseY = event.offsetY
+    
+    const meme = getMemes()
+    meme.lines.forEach((line, index) => {
+        if (mouseY >= 50 + index * 30 - line.size && mouseY <= 50 + index * 30) {
+            selectedLine = index
+            isDragging = true
+            offsetX = mouseX - canvas.width / 2
+            offsetY = mouseY - (50 + index * 30 - line.size)
+            renderMeme()
+        }
+    })
+}
+
+function onMouseMove(event) {
+    if (isDragging && selectedLine !== null) {
+        const mouseX = event.offsetX
+        const mouseY = event.offsetY
+        
+        const meme = getMemes()
+        meme.lines[selectedLine].posX = mouseX - offsetX
+        meme.lines[selectedLine].posY = mouseY - offsetY
+        renderMeme()
+    }
+}
+
+function onMouseUp() {
+    isDragging = false;
+    selectedLine = null;
+}
+
+function switchLine() {
+    const meme = getMemes()
+    
+    meme.selectedLineIdx = (meme.selectedLineIdx + 1) % meme.lines.length
+    
+    renderMeme()
+}
+
+function deleteLine() {
+    const meme = getMemes()
+    
+    meme.lines.splice(meme.selectedLineIdx, 1)
+    
+    if (meme.lines.length === 0) {
+        addNewLine()
+    } else {
+        meme.selectedLineIdx = Math.max(0, meme.selectedLineIdx - 1)
+        
+        renderMeme()
+    }
+}
+
+
+function increaseFontSize(){
+    const meme = getMemes()
+    meme.lines[meme.selectedLineIdx].size += 2
+    renderMeme()
+}
+
+function decreaseFontSize(){
+    const meme = getMemes()
+    meme.lines[meme.selectedLineIdx].size -= 2
+    renderMeme()
+}
+
+colorPicker.addEventListener('change', function() {
     updateColor(this.value)
 })
 
 function updateColor(color){
     const meme = getMemes()
     meme.lines[meme.selectedLineIdx].color = color
+    renderMeme()
 }
 
 function downloadCanvas(link, filename){

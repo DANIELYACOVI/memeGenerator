@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>memeGenerator</title>
     <link rel="stylesheet" href="css/meme.css">
+    <script src="https://kit.fontawesome.com/3bebbaae4f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,12 +28,17 @@
             <label for="color">Text Color:</label>
             <input type="color" id="color-picker">
             <input type="text" id="text-input" placeholder="Enter your text here">
+            <button class="font-size" onclick="increaseFontSize()"><i class="fa-solid fa-plus"></i></button>
+            <button class="font-size" onclick="decreaseFontSize()"><i class="fa-solid fa-minus"></i></button>
+            <button id="add-line-btn" onclick="addNewLine()">Add Line</button>
+            <button id="switch-line-btn" onclick="switchLine()">Switch Line</button>
+            <button id="delete-line-btn" onclick="deleteLine()">Delete Line</button>
+            <div>
+                <button id="save" onclick="onSave">Save</button>
+                <a href="#" id="download" onclick="downloadCanvas(this, 'myMeme.png')" download="file-name">Download</a>
+            </div>
         </div>
-        <div>
-            <button id="save" onclick="onSave">Save</button>
-            <a href="#" id="download" onclick="downloadCanvas(this, 'myMeme.png')" download="file-name">Download</a>
-        </div>
-        <canvas id="canvas" style="display: none;"></canvas>
+            <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
 

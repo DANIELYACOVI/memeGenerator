@@ -5,10 +5,9 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: ''
-            ,
+            txt: '',
             size: 20,
-            color: 'red'
+            color: 'black'
         }
     ]
 }
