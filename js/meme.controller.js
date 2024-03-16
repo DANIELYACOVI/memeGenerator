@@ -174,8 +174,8 @@ function onMouseMove(event) {
 }
 
 function onMouseUp() {
-    isDragging = false;
-    selectedLine = null;
+    isDragging = false
+    selectedLine = null
 }
 
 function switchLine() {
@@ -223,6 +223,15 @@ function updateColor(color){
     renderMeme()
 }
 
+function addSticker(sticker){
+    const meme = getMemes()
+    const selectedLineIdx = meme.selectedLineIdx
+    
+    meme.lines[selectedLineIdx].txt = sticker
+
+    renderMeme()
+}
+
 function downloadCanvas(link, filename){
     link.href = canvas.toDataURL()
     link.download = filename
@@ -247,4 +256,6 @@ function onSearchMems(keyword){
     }
 }
 
-
+document.getElementById('title').addEventListener('click', function(){
+    window.location.href = 'index.html'
+})
