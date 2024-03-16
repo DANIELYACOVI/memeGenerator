@@ -29,3 +29,11 @@ h1{
 canvas {
     border: 1px solid lightgrey;
 }
+
+.gallery-image{
+    cursor: pointer;
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    border-radius: .25em;
+}
