@@ -78,7 +78,9 @@ gImgs.forEach((img, index) => {
 
 function displayCanvasAndRenderMeme(imgIndex){
     gallery.style.display = 'none'
+    search.style.display = 'none'
     canvas.style.display = 'block'
+    editor.style.display = 'block'
 
     gMeme.selectedImgId = imgIndex
 
@@ -93,3 +95,38 @@ gallery.addEventListener('click', function (event) {
         }
     }
 })
+
+const textInput = document.getElementById('text-input')
+textInput.addEventListener('input',function() {
+    updateMemeAndRender(this.value)
+})
+
+function updateMemeAndRender(text){
+    setLineTxt(text)
+    renderMeme()
+}
+
+function setLineTxt(text){
+    const meme = getMemes()
+    meme.lines[meme.selectedLineIdx].txt = text
+}
+
+function onSearchMems(keyword){
+    const filteredImages = gImgs.filter(img => img.keywords.some(key =>key.includes(keyword.toLowerCase())))
+
+    gallery.innerHTML = ''
+
+    if (filteredImages.length === 0) {
+        const noResultMessage = document.createElement('p')
+        noResultMessage.textContent = "No results found."
+        gallery.appendChild(noResultMessage)
+    } else {
+        filteredImages.forEach(img => {
+            const imgElement = document.createElement('img')
+            imgElement.src = img.url
+            imgElement.classList.add('gallery-image')
+            gallery.appendChild(imgElement)
+        })
+    }
+}
+
