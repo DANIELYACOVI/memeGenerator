@@ -12,3 +12,7 @@ var gMeme = {
         }
     ]
 }
+
+function getMemes(){
+    return gMeme
+}
