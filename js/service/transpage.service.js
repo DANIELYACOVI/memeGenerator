@@ -13,7 +13,7 @@ const gTrans = {
         english: 'Saved',
         hebrew: 'שמור'
     },
-    randomized: {
+    random: {
         english: 'Randomized',
         hebrew: 'אקראי'
     },

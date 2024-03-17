@@ -1,11 +1,25 @@
 'use strict'
 
+var randomTab = document.getElementById("random-tab")
+
+randomTab.addEventListener("click", function() {
+    var galleryContainer = document.getElementById("gallery-container")
+    var randomContainer = document.getElementById("random-container")
+    
+    if (galleryContainer.style.display === "none") {
+        galleryContainer.style.display = "block"
+        randomContainer.style.display = "none"
+    } else {
+        galleryContainer.style.display = "none"
+        randomContainer.style.display = "block"
+    }
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     const randomMemeBtn = document.getElementById('randomMemeBtn')
     // const randomMemeImg = document.getElementById('randomMemeImg')
 
-    const canvas = document.getElementById('canvas')
+    const canvas = document.getElementById('canvas-random')
     const ctx = canvas.getContext('2d')
 
     const randomTexts = [

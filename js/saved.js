@@ -1,5 +1,25 @@
 'use strict'
 
+window.onload = function() {
+    loadSavedMemes()
+}
+
+var savedTab = document.getElementById("saved-tab")
+
+savedTab.addEventListener("click", function() {
+    var galleryContainer = document.getElementById("gallery-container")
+    var savedContainer = document.getElementById("saved-container")
+    
+    if (galleryContainer.style.display === "none") {
+        galleryContainer.style.display = "block"
+        savedContainer.style.display = "none"
+    } else {
+        galleryContainer.style.display = "none"
+        savedContainer.style.display = "block"
+    }
+})
+
+
 function loadSavedMemes(){
     const savedMemesContainer = document.getElementById('saved-memes-container')
     const savedMemes = loadFromStorage('savedMemes')
@@ -28,14 +48,13 @@ function renderSavedMemeHTML(meme) {
 }
 
 function openSocialDialog() {
-    document.getElementById('social-dialog').style.display = 'block';
+    document.getElementById('social-dialog').style.display = 'block'
 }
 
-// Close dialog when clicked outside of it
 window.onclick = function(event) {
-    const dialog = document.getElementById('social-dialog');
+    const dialog = document.getElementById('social-dialog')
     if (event.target == dialog) {
-        dialog.style.display = 'none';
+        dialog.style.display = 'none'
     }
-};
+}
 

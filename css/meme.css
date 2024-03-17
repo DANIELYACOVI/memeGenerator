@@ -18,11 +18,11 @@ header {
     padding: 10px 0;
 }
 
-h1{
+h1 {
     margin-inline-start: 10px;
 }
 
-#title{
+#title {
     cursor: pointer;
 }
 
@@ -38,18 +38,22 @@ h1{
 }
 
 nav {
+    cursor: pointer;
     background-color: #444;
     text-align: center;
     padding: 10px 0;
+    list-style: none;
+    color: white;
+    margin: 0;
+    padding: 10px;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
+nav li {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.search-container{
+.search-container {
     text-align: center;
     margin: 20px 0;
 }
@@ -69,12 +73,17 @@ nav a {
     padding: 20px;
 }
 
-.gallery-image{
+.gallery-image {
     cursor: pointer;
     width: 200px;
     height: auto;
     margin: 10px;
     border-radius: .25em;
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.1);
 }
 
 canvas {
@@ -123,7 +132,8 @@ canvas {
     border-radius: 5px;
 }
 
-#download, #save{
+#download,
+#save {
     cursor: pointer;
     color: white;
     padding: 10px 20px;
@@ -134,7 +144,7 @@ canvas {
     border: none;
 }
 
-#download{
+#download {
     background-color: #007bff;
 }
 
@@ -142,11 +152,11 @@ canvas {
     background-color: #0056b3;
 }
 
-#save{
+#save {
     background-color: #4CAF50;
 }
 
-#save:hover{
+#save:hover {
     background-color: #45a049;
 }
 
@@ -156,9 +166,9 @@ canvas {
     gap: 20px;
 }
 
-dialog{
+dialog {
     position: fixed;
-    z-index:99;
+    z-index: 99;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -167,7 +177,7 @@ dialog{
     padding: 12px;
 }
 
-#close-dialog{
+#close-dialog {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -177,7 +187,7 @@ dialog{
     margin-top: 10px;
 }
 
-#close-dialog:hover{
+#close-dialog:hover {
     background-color: #45a049;
 }
 

@@ -22,19 +22,6 @@ h1 {
     margin-inline-start: 10px;
 }
 
-nav {
-    background-color: #444;
-    text-align: center;
-    padding: 10px 0;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-
 button#randomMemeBtn {
     position: absolute;
     cursor: pointer;
