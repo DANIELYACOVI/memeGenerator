@@ -51,6 +51,12 @@ nav {
 nav li {
     display: inline-block;
     margin-right: 10px;
+    
+}
+
+nav li:hover,
+nav li.active {
+    color: #bdbdbd;
 }
 
 .search-container {

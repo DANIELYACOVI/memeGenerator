@@ -269,11 +269,6 @@ function onSave() {
 
     const dialog = document.getElementById('save-dialog')
     dialog.showModal()
-
-    const okButton = document.getElementById('close-dialog')
-    okButton.addEventListener('click', function() {
-        window.location.href = 'saved.html'
-    })
 }
 
 function saveMemeToStorage(meme) {
@@ -297,15 +292,3 @@ function saveMemeToStorage(meme) {
     saveToStorage('savedMemes', savedMemes)
 }
 
-var galleryTab = document.getElementById("gallery-tab")
-
-galleryTab.addEventListener("click", function() {
-    var galleryContainer = document.getElementById("gallery-container")
-    var savedContainer = document.getElementById("saved-container")
-    var randomContainer = document.getElementById("random-container")
-    
-    galleryContainer.style.display = "block"
-    
-    savedContainer.style.display = "none"
-    randomContainer.style.display = "none"
-})

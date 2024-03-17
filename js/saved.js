@@ -4,22 +4,6 @@ window.onload = function() {
     loadSavedMemes()
 }
 
-var savedTab = document.getElementById("saved-tab")
-
-savedTab.addEventListener("click", function() {
-    var galleryContainer = document.getElementById("gallery-container")
-    var savedContainer = document.getElementById("saved-container")
-    
-    if (galleryContainer.style.display === "none") {
-        galleryContainer.style.display = "block"
-        savedContainer.style.display = "none"
-    } else {
-        galleryContainer.style.display = "none"
-        savedContainer.style.display = "block"
-    }
-})
-
-
 function loadSavedMemes(){
     const savedMemesContainer = document.getElementById('saved-memes-container')
     const savedMemes = loadFromStorage('savedMemes')
@@ -35,7 +19,7 @@ function loadSavedMemes(){
             savedMemesContainer.appendChild(elMeme)
         })
     }else{
-        savedMemesContainer.innerHTML = '<p>No saved memes yet.</p>'
+        savedMemesContainer.innerHTML = '<p>No saved memes yet...</p>'
     }
 }
 
