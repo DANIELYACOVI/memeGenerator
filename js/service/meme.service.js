@@ -12,6 +12,6 @@ var gMeme = {
     ]
 }
 
-function getMemes(){
+function getMemes() {
     return gMeme
 }

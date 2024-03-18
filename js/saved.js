@@ -1,14 +1,14 @@
 'use strict'
 
-window.onload = function() {
+window.onload = function () {
     loadSavedMemes()
 }
 
-function loadSavedMemes(){
+function loadSavedMemes() {
     const savedMemesContainer = document.getElementById('saved-memes-container')
     const savedMemes = loadFromStorage('savedMemes')
 
-    if(savedMemes && savedMemes.length > 0){
+    if (savedMemes && savedMemes.length > 0) {
         savedMemes.forEach(meme => {
             const elMeme = document.createElement('div')
             elMeme.classList.add('saved-meme')
@@ -18,7 +18,7 @@ function loadSavedMemes(){
 
             savedMemesContainer.appendChild(elMeme)
         })
-    }else{
+    } else {
         savedMemesContainer.innerHTML = '<p>No saved memes yet...</p>'
     }
 }
@@ -35,7 +35,7 @@ function openSocialDialog() {
     document.getElementById('social-dialog').style.display = 'block'
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     const dialog = document.getElementById('social-dialog')
     if (event.target == dialog) {
         dialog.style.display = 'none'

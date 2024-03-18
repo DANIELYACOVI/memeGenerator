@@ -62,7 +62,7 @@ var gImgs = [
 function renderMeme() {
     const meme = getMemes()
     const img = new Image()
-    
+
     img.onload = function () {
         canvas.width = img.width
         canvas.height = img.height
@@ -88,7 +88,7 @@ gImgs.forEach((img, index) => {
     gallery.appendChild(imgElement)
 })
 
-function displayCanvasAndRenderMeme(imgIndex){
+function displayCanvasAndRenderMeme(imgIndex) {
     gallery.style.display = 'none'
     search.style.display = 'none'
     canvas.style.display = 'block'
@@ -109,16 +109,16 @@ gallery.addEventListener('click', function (event) {
 })
 
 const textInput = document.getElementById('text-input')
-textInput.addEventListener('input',function() {
+textInput.addEventListener('input', function () {
     updateMemeAndRender(this.value)
 })
 
-function updateMemeAndRender(text){
+function updateMemeAndRender(text) {
     setLineTxt(text)
     renderMeme()
 }
 
-function setLineTxt(text){
+function setLineTxt(text) {
     const meme = getMemes()
     meme.lines[meme.selectedLineIdx].txt = text
 }
@@ -131,11 +131,11 @@ function addNewLine() {
         size: 20,
         color: 'red'
     }
-    
+
     meme.lines.push(newLine)
-    
+
     meme.selectedLineIdx = meme.lines.length - 1
-    
+
     renderMeme()
 
     document.getElementById('text-input').value = ''
@@ -144,7 +144,7 @@ function addNewLine() {
 function onMouseDown(event) {
     const mouseX = event.offsetX
     const mouseY = event.offsetY
-    
+
     const meme = getMemes()
     meme.lines.forEach((line, index) => {
         if (mouseY >= 50 + index * 30 - line.size && mouseY <= 50 + index * 30) {
@@ -161,7 +161,7 @@ function onMouseMove(event) {
     if (isDragging && selectedLine !== null) {
         const mouseX = event.offsetX
         const mouseY = event.offsetY
-        
+
         const meme = getMemes()
         meme.lines[selectedLine].posX = mouseX - offsetX
         meme.lines[selectedLine].posY = mouseY - offsetY
@@ -176,64 +176,64 @@ function onMouseUp() {
 
 function switchLine() {
     const meme = getMemes()
-    
+
     meme.selectedLineIdx = (meme.selectedLineIdx + 1) % meme.lines.length
-    
+
     renderMeme()
 }
 
 function deleteLine() {
     const meme = getMemes()
-    
+
     meme.lines.splice(meme.selectedLineIdx, 1)
-    
+
     if (meme.lines.length === 0) {
         addNewLine()
     } else {
         meme.selectedLineIdx = Math.max(0, meme.selectedLineIdx - 1)
-        
+
         renderMeme()
     }
 }
 
-function increaseFontSize(){
+function increaseFontSize() {
     const meme = getMemes()
     meme.lines[meme.selectedLineIdx].size += 2
     renderMeme()
 }
 
-function decreaseFontSize(){
+function decreaseFontSize() {
     const meme = getMemes()
     meme.lines[meme.selectedLineIdx].size -= 2
     renderMeme()
 }
 
-colorPicker.addEventListener('change', function() {
+colorPicker.addEventListener('change', function () {
     updateColor(this.value)
 })
 
-function updateColor(color){
+function updateColor(color) {
     const meme = getMemes()
     meme.lines[meme.selectedLineIdx].color = color
     renderMeme()
 }
 
-function addSticker(sticker){
+function addSticker(sticker) {
     const meme = getMemes()
     const selectedLineIdx = meme.selectedLineIdx
-    
+
     meme.lines[selectedLineIdx].txt = sticker
 
     renderMeme()
 }
 
-function downloadCanvas(link, filename){
+function downloadCanvas(link, filename) {
     link.href = canvas.toDataURL()
     link.download = filename
 }
 
-function onSearchMems(keyword){
-    const filteredImages = gImgs.filter(img => img.keywords.some(key =>key.includes(keyword.toLowerCase())))
+function onSearchMems(keyword) {
+    const filteredImages = gImgs.filter(img => img.keywords.some(key => key.includes(keyword.toLowerCase())))
 
     gallery.innerHTML = ''
 
@@ -251,14 +251,14 @@ function onSearchMems(keyword){
     }
 }
 
-document.getElementById('title').addEventListener('click', function(){
+document.getElementById('title').addEventListener('click', function () {
     window.location.href = 'index.html'
 })
 
 function onSave() {
     const meme = getMemes()
     const selectedImgUrl = gImgs[meme.selectedImgId].url
-    
+
     const img = new Image()
     img.onload = function () {
         const canvasDataURL = canvas.toDataURL()
@@ -291,4 +291,3 @@ function saveMemeToStorage(meme) {
 
     saveToStorage('savedMemes', savedMemes)
 }
-
