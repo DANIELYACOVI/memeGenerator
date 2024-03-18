@@ -41,4 +41,3 @@ window.onclick = function (event) {
         dialog.style.display = 'none'
     }
 }
-
