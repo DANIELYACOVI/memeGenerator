@@ -28,7 +28,7 @@ function renderSavedMemeHTML(meme, index) {
     return `
         <div class="saved-memes-container">
             <img src="${meme.url}" alt="Saved Meme">
-            <button onclick="deleteSavedMeme(${index})">Delete</button>
+            <button class = "delete-btn" onclick="deleteSavedMeme(${index})">Delete</button>
         </div>
     `
 }

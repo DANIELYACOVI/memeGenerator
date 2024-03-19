@@ -4,8 +4,8 @@ let isDragging = false
 let selectedLine = null
 let offsetX, offsetY
 
-const gallery = document.getElementById('gallery')
-var canvas = document.getElementById('canvas')
+// const gallery = document.getElementById('gallery')
+// var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 const colorPicker = document.getElementById('color-picker')
 
@@ -74,9 +74,7 @@ function displayCanvasAndRenderMeme(imgIndex) {
 gallery.addEventListener('click', function (event) {
   if (event.target.classList.contains('gallery-image')) {
     const imgIndex = event.target.dataset.index
-    if (imgIndex !== undefined) {
-      displayCanvasAndRenderMeme(parseInt(imgIndex))
-    }
+    displayCanvasAndRenderMeme(imgIndex)
   }
 })
 
@@ -121,7 +119,7 @@ function onMouseDown(event) {
 
   const meme = getMemes()
   meme.lines.forEach((line, index) => {
-    if (mouseX >= line.posX - 20 && mouseX <= line.posX + 20 && mouseY >= line.posY - 20 && mouseY <= line.posY + 20) {
+    if (mouseX >= line.posX - 100 && mouseX <= line.posX + 100 && mouseY >= line.posY - 100 && mouseY <= line.posY + 100) {
       selectedLine = index
       isDragging = true
       canvas.classList.add('dragging')
