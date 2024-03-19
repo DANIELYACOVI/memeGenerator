@@ -42,15 +42,12 @@ function toggleMenu() {
 }
 
 function navigateToSaved() {
-    // Hide the save dialog
-    closeDialog();
-    // Switch to the saved memes section
-    toggleSavedMemesSection();
+    closeDialog()
+    toggleSavedMemesSection()
 }
 
 function toggleSavedMemesSection() {
-    // Hide other sections and display the saved memes section
-    document.getElementById('gallery-container').style.display = 'none';
-    document.getElementById('random-container').style.display = 'none';
-    document.getElementById('saved-container').style.display = 'block';
+    document.getElementById('gallery-container').style.display = 'none'
+    document.getElementById('random-container').style.display = 'none'
+    document.getElementById('saved-container').style.display = 'block'
 }

@@ -9,11 +9,12 @@ function loadSavedMemes() {
     const savedMemes = loadFromStorage('savedMemes')
 
     if (savedMemes && savedMemes.length > 0) {
-        savedMemes.forEach(meme => {
+        savedMemesContainer.innerHTML = ''
+        savedMemes.forEach((meme, index) => {
             const elMeme = document.createElement('div')
             elMeme.classList.add('saved-meme')
 
-            const memeHTML = renderSavedMemeHTML(meme)
+            const memeHTML = renderSavedMemeHTML(meme, index)
             elMeme.innerHTML = memeHTML
 
             savedMemesContainer.appendChild(elMeme)
@@ -23,21 +24,21 @@ function loadSavedMemes() {
     }
 }
 
-function renderSavedMemeHTML(meme) {
+function renderSavedMemeHTML(meme, index) {
     return `
         <div class="saved-memes-container">
             <img src="${meme.url}" alt="Saved Meme">
+            <button onclick="deleteSavedMeme(${index})">Delete</button>
         </div>
     `
 }
 
-function openSocialDialog() {
-    document.getElementById('social-dialog').style.display = 'block'
-}
+function deleteSavedMeme(index){
+    const savedMemes = loadFromStorage('savedMemes')
 
-window.onclick = function (event) {
-    const dialog = document.getElementById('social-dialog')
-    if (event.target == dialog) {
-        dialog.style.display = 'none'
+    if(savedMemes && savedMemes.length > index){
+        savedMemes.splice(index, 1)
+        saveToStorage('savedMemes', savedMemes)
+        loadSavedMemes()
     }
 }

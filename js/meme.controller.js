@@ -204,8 +204,6 @@ function addSticker(sticker) {
 
   meme.lines.push(newStickerLine)
 
-  meme.selectedLineIdx = meme.lines.length - 1
-
   renderMeme()
 }
 
@@ -269,8 +267,6 @@ function closeDialog() {
 
 function saveMemeToStorage(meme) {
   const savedMemes = loadFromStorage('savedMemes') || []
-
-  const selectedImgUrl = meme.url
 
   const clonedMeme = JSON.parse(JSON.stringify(meme))
 
