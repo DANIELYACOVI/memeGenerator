@@ -29,6 +29,24 @@ function renderMeme() {
       ctx.textAlign = 'center'
 
       ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
+
+      if(index === meme.selectedLineIdx) {
+        const textWidth = ctx.measureText(line.txt).width
+        const textHeight = line.size
+        const padding = 5
+
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 2
+
+        ctx.beginPath()
+        ctx.rect(
+          (line.posX || canvas.width / 2) - (textWidth / 2) - padding,
+          (line.posY || 50 + index * 30) - textHeight - padding,
+          textWidth + 2 * padding,
+          textHeight + 2 * padding
+        )
+        ctx.stroke()
+      }
     })
   }
   img.src = gImgs[meme.selectedImgId].url
@@ -86,7 +104,6 @@ function addNewLine() {
   const newLine = {
     txt: '',
     size: 20,
-    color: 'red',
   }
 
   meme.lines.push(newLine)
@@ -135,6 +152,8 @@ function switchLine() {
   const meme = getMemes()
 
   meme.selectedLineIdx = (meme.selectedLineIdx + 1) % meme.lines.length
+
+  renderMeme()
 }
 
 function deleteLine() {
@@ -175,9 +194,17 @@ function updateColor(color) {
 
 function addSticker(sticker) {
   const meme = getMemes()
-  const selectedLineIdx = meme.selectedLineIdx
 
-  meme.lines[selectedLineIdx].txt = sticker
+  const newStickerLine = {
+    txt: sticker,
+    size: 20,
+    posX: canvas.width / 2,
+    posY: canvas.height / 2,
+  }
+
+  meme.lines.push(newStickerLine)
+
+  meme.selectedLineIdx = meme.lines.length - 1
 
   renderMeme()
 }
@@ -245,11 +272,6 @@ function saveMemeToStorage(meme) {
 
   const selectedImgUrl = meme.url
 
-  if (!selectedImgUrl) {
-    console.error('Image URL not found for selectedImgId:', meme.selectedImgId)
-    return
-  }
-
   const clonedMeme = JSON.parse(JSON.stringify(meme))
 
   const canvasDataURL = canvas.toDataURL()
@@ -259,4 +281,23 @@ function saveMemeToStorage(meme) {
   savedMemes.push(clonedMeme)
 
   saveToStorage('savedMemes', savedMemes)
+
+  updateSavedMemesSection(savedMemes)
+}
+
+function updateSavedMemesSection(savedMemes) {
+  const savedMemesContainer = document.getElementById('saved-memes-container')
+  savedMemesContainer.innerHTML = ''
+
+  savedMemes.forEach((meme, index) => {
+    const memeElement = document.createElement('div')
+    memeElement.classList.add('saved-meme')
+
+    const img = document.createElement('img')
+    img.src = meme.url
+    img.alt = 'Saved Meme'
+
+    memeElement.appendChild(img)
+    savedMemesContainer.appendChild(memeElement)
+  })
 }

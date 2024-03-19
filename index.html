@@ -39,13 +39,13 @@
             </datalist>
         </div>
         
-        <div id="keywords-container">
+        <!-- <div id="keywords-container">
             <ul>
                 <li onclick="onKeywordClick('Funny')">Funny</li>
                 <li onclick="onKeywordClick('Baby')">Baby</li>
                 <li onclick="onKeywordClick('Dog')">Dog</li>
             </ul>
-        </div>
+        </div> -->
 
         <div id="gallery"></div>
 
@@ -84,7 +84,8 @@
         <dialog id="save-dialog">
             <button id="close-dialog-btn" onclick="closeDialog()">✖</button>
             <p>Meme saved successfully! 🙌</p>
-        </dialog>
+            <button id="ok-btn" onclick="navigateToSaved()">OK</button>
+        </dialog>        
         
     </section>
 
