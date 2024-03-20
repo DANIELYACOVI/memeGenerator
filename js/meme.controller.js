@@ -28,24 +28,26 @@ function renderMeme() {
       ctx.font = line.size + 'px Arial'
       ctx.textAlign = 'center'
 
-      ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
+      if (line.txt !== '') {
+        ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
 
-      if(index === meme.selectedLineIdx) {
-        const textWidth = ctx.measureText(line.txt).width
-        const textHeight = line.size
-        const padding = 5
+        if (index === meme.selectedLineIdx) {
+          const textWidth = ctx.measureText(line.txt).width
+          const textHeight = line.size
+          const padding = 5
 
-        ctx.strokeStyle = 'black'
-        ctx.lineWidth = 2
+          ctx.strokeStyle = 'black'
+          ctx.lineWidth = 2
 
-        ctx.beginPath()
-        ctx.rect(
-          (line.posX || canvas.width / 2) - (textWidth / 2) - padding,
-          (line.posY || 50 + index * 30) - textHeight - padding,
-          textWidth + 2 * padding,
-          textHeight + 2 * padding
-        )
-        ctx.stroke()
+          ctx.beginPath()
+          ctx.rect(
+            (line.posX || canvas.width / 2) - (textWidth / 2) - padding,
+            (line.posY || 50 + index * 30) - textHeight - padding,
+            textWidth + 2 * padding,
+            textHeight + 2 * padding
+          )
+          ctx.stroke()
+        }
       }
     })
   }
@@ -100,7 +102,7 @@ function addNewLine() {
   const meme = getMemes()
 
   const newLine = {
-    txt: '',
+    txt: 'Enter your text',
     size: 20,
   }
 
