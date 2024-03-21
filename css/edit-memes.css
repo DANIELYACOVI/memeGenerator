@@ -30,6 +30,19 @@
     cursor: pointer;
 }
 
+.line-actions{
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-meme{
+    margin-top: 150px;
+}
+
 #stickers {
     display: flex;
     justify-content: center;
@@ -90,8 +103,6 @@
 #editor #save:hover {
     background-color: #45a049;
 }
-
-
 
 dialog {
     position: fixed;

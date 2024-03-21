@@ -251,7 +251,7 @@ function onKeywordClick(keyword) {
 }
 
 function increaseFontSizeOfClickedKeyword(keyword) {
-  const keywordsList = document.getElementById('keywords-list')
+  const keywordsList = document.getElementById('keywords')
   const keywordElements = keywordsList.getElementsByTagName('li')
   
   for (var i = 0; i < keywordElements.length; i++) {
