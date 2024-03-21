@@ -98,20 +98,29 @@ function setLineTxt(text) {
 }
 
 function addNewLine() {
-  const meme = getMemes()
-
-  const newLine = {
-    txt: 'Enter your text',
-    size: 20,
-  }
-
-  meme.lines.push(newLine)
-
-  meme.selectedLineIdx = meme.lines.length - 1
-
+  onAddLine()
   renderMeme()
 
   document.getElementById('text-input').value = ''
+}
+
+function addSticker(sticker) {
+  onAddSticker(sticker)
+  renderMeme()
+}
+
+function updateColor(color) {
+  onUpdateColor(color)
+  renderMeme()
+}
+
+colorPicker.addEventListener('change', function () {
+  updateColor(this.value)
+})
+
+function deleteLine() {
+  onDeleteLine()
+  renderMeme()
 }
 
 function onMouseDown(event) {
@@ -158,20 +167,6 @@ function switchLine() {
   renderMeme()
 }
 
-function deleteLine() {
-  const meme = getMemes()
-
-  meme.lines.splice(meme.selectedLineIdx, 1)
-
-  if (meme.lines.length === 0) {
-    addNewLine()
-  } else {
-    meme.selectedLineIdx = Math.max(0, meme.selectedLineIdx - 1)
-
-    renderMeme()
-  }
-}
-
 function increaseFontSize() {
   const meme = getMemes()
   meme.lines[meme.selectedLineIdx].size += 2
@@ -181,33 +176,6 @@ function increaseFontSize() {
 function decreaseFontSize() {
   const meme = getMemes()
   meme.lines[meme.selectedLineIdx].size -= 2
-  renderMeme()
-}
-
-colorPicker.addEventListener('change', function () {
-  updateColor(this.value)
-})
-
-function updateColor(color) {
-  const meme = getMemes()
-  meme.lines[meme.selectedLineIdx].color = color
-  renderMeme()
-}
-
-function addSticker(sticker) {
-  const meme = getMemes()
-
-  const newStickerLine = {
-    txt: sticker,
-    size: 20,
-    posX: canvas.width / 2,
-    posY: canvas.height / 2,
-  }
-
-  meme.lines.push(newStickerLine)
-
-  meme.selectedLineIdx = meme.lines.length - 1
-
   renderMeme()
 }
 
@@ -253,7 +221,7 @@ function onKeywordClick(keyword) {
 function increaseFontSizeOfClickedKeyword(keyword) {
   const keywordsList = document.getElementById('keywords')
   const keywordElements = keywordsList.getElementsByTagName('li')
-  
+
   for (var i = 0; i < keywordElements.length; i++) {
     if (keywordElements[i].textContent === keyword) {
       const currentFontSize = parseInt(keywordElements[i].style.fontSize || '16px')
@@ -289,8 +257,6 @@ function closeDialog() {
 
 function saveMemeToStorage(meme) {
   const savedMemes = loadFromStorage('savedMemes') || []
-
-  const selectedImgUrl = meme.url
 
   const clonedMeme = JSON.parse(JSON.stringify(meme))
 
