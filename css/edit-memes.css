@@ -12,16 +12,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#editor .sticker {
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border: none;
-    background-color: #fff;
-    border-radius: 5px;
-}
-
 #editor button {
     margin-bottom: 10px;
     padding: 8px 16px;
@@ -74,6 +64,10 @@
     border-radius: 4px;
     margin-bottom: 5px;
     color: #fff;
+}
+
+.font-size:hover{
+    background-color: rgb(230, 230, 230);
 }
 
 #editor #download,
