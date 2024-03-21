@@ -4,8 +4,6 @@ let isDragging = false
 let selectedLine = null
 let offsetX, offsetY
 
-// const gallery = document.getElementById('gallery')
-// var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 const colorPicker = document.getElementById('color-picker')
 
@@ -28,7 +26,7 @@ function renderMeme() {
       ctx.font = line.size + 'px Arial'
       ctx.textAlign = 'center'
 
-      if (line.txt !== '') {
+      if (line.txt.trim() !== '') {
         ctx.fillText(line.txt, line.posX || canvas.width / 2, line.posY || 50 + index * 30)
 
         if (index === meme.selectedLineIdx) {
@@ -65,6 +63,7 @@ gImgs.forEach((img, index) => {
 function displayCanvasAndRenderMeme(imgIndex) {
   gallery.style.display = 'none'
   search.style.display = 'none'
+  keywords.style.display = 'none'
   canvas.style.display = 'block'
   editor.style.display = 'block'
 
@@ -121,7 +120,10 @@ function onMouseDown(event) {
 
   const meme = getMemes()
   meme.lines.forEach((line, index) => {
-    if (mouseX >= line.posX - 100 && mouseX <= line.posX + 100 && mouseY >= line.posY - 100 && mouseY <= line.posY + 100) {
+    if (mouseX >= line.posX - 100 &&
+      mouseX <= line.posX + 100 &&
+      mouseY >= line.posY - 100 &&
+      mouseY <= line.posY + 100) {
       selectedLine = index
       isDragging = true
       canvas.classList.add('dragging')
@@ -239,6 +241,24 @@ function onSearchMems(keyword) {
       imgElement.classList.add('gallery-image')
       gallery.appendChild(imgElement)
     })
+  }
+}
+
+function onKeywordClick(keyword) {
+  document.getElementById('search').value = keyword
+  onSearchMems(keyword)
+  increaseFontSizeOfClickedKeyword(keyword)
+}
+
+function increaseFontSizeOfClickedKeyword(keyword) {
+  const keywordsList = document.getElementById('keywords-list')
+  const keywordElements = keywordsList.getElementsByTagName('li')
+  
+  for (var i = 0; i < keywordElements.length; i++) {
+    if (keywordElements[i].textContent === keyword) {
+      const currentFontSize = parseInt(keywordElements[i].style.fontSize || '16px')
+      keywordElements[i].style.fontSize = (currentFontSize + 2) + 'px'
+    }
   }
 }
 

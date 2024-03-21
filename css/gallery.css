@@ -11,6 +11,28 @@
     font-size: 16px;
 }
 
+#keywords {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-inline-start: 60px;
+}
+
+#keywords li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#keywords li:hover {
+    background-color: #d3d3d3;
+}
+
 #gallery {
     display: flex;
     flex-wrap: wrap;

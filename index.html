@@ -29,7 +29,7 @@
         </nav>
         <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
             <i class="fas fa-bars" id="menu-icon"></i>
-        </button> 
+        </button>
 
         <div class="search-container">
             <input id="search" list="meme-type" type="text" placeholder="Search..." oninput="onSearchMems(this.value)"
@@ -37,14 +37,14 @@
             <datalist id="meme-type">
             </datalist>
         </div>
-        
-        <!-- <div id="keywords-container">
-            <ul>
+
+        <div id="keywords-container">
+            <ul id="keywords">
                 <li onclick="onKeywordClick('Funny')">Funny</li>
                 <li onclick="onKeywordClick('Baby')">Baby</li>
                 <li onclick="onKeywordClick('Dog')">Dog</li>
             </ul>
-        </div> -->
+        </div>
 
         <div id="gallery"></div>
 
@@ -76,15 +76,20 @@
                     <a href="#" id="download" onclick="downloadCanvas(this, 'myMeme.png')"
                         download="file-name">Download</a>
                 </div>
+                <div class="share-memes">
+                    <button class="share-btn" onclick="shareToFacebook()"><i class="fa-brands fa-facebook"></i></button>
+                    <button class="share-btn" onclick="shareToInstagram()"><i
+                            class="fa-brands fa-instagram"></i></button>
+                </div>
             </div>
             <canvas id="canvas" style="display: none;"></canvas>
         </div>
-        
+
         <dialog id="save-dialog">
             <p>Meme saved successfully! 🙌</p>
             <button id="ok-btn" onclick="navigateToSaved()">OK</button>
-        </dialog>        
-        
+        </dialog>
+
     </section>
 
     <section id="saved-container" style="display: none;">
@@ -96,7 +101,7 @@
         </nav>
         <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
             <i class="fas fa-bars" id="menu-icon"></i>
-        </button> 
+        </button>
 
         <div id="saved-memes-container"></div>
     </section>
@@ -109,7 +114,7 @@
         </nav>
         <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
             <i class="fas fa-bars" id="menu-icon"></i>
-        </button> 
+        </button>
 
         <button id="randomMemeBtn">Random Meme ✨</button>
 
@@ -124,7 +129,8 @@
     <script src="js/saved.js"></script>
     <script src="js/random.js"></script>
     <script src="js/navigation.js"></script>
-    
+    <script src="js/share-meme.js"></script>
+
 </body>
 
 </html>

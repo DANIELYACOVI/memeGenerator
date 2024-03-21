@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ]
 
     function generateRandomMeme() {
+
         const randomImgIndex = Math.floor(Math.random() * gImgs.length)
         const randomImgUrl = gImgs[randomImgIndex].url
 
