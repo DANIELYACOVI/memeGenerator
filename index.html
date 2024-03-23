@@ -53,15 +53,14 @@
                 <label for="color">Text Color:</label>
                 <input type="color" id="color-picker">
                 <input type="text" id="text-input" placeholder="Enter your text here">
-                <button class="font-size" onclick="increaseFontSize()"><i class="fa-solid fa-plus"></i></button>
-                <button class="font-size" onclick="decreaseFontSize()"><i class="fa-solid fa-minus"></i></button>
-                <div class="line-actions">
-                    <button id="add-line-btn" onclick="addNewLine()">Add Line</button>
-                    <button id="switch-line-btn" onclick="switchLine()">Switch Line</button>
-                    <button class="delete-btn" onclick="deleteLine()">Delete Line</button>
+                <button class="line-actions" onclick="increaseFontSize()"><i class="fa-solid fa-plus"></i></button>
+                <button class="line-actions" onclick="decreaseFontSize()"><i class="fa-solid fa-minus"></i></button>
+                <div>
+                    <button class="line-actions" onclick="addNewLine()">Add Line</button>
+                    <button class="line-actions" onclick="switchLine()">Switch Line</button>
+                    <button class="deleteLine" onclick="deleteLine()"><i class="fa-regular fa-trash-can"></i></button>
                 </div>
                 <div id="stickers">
-                    <p>Add Emoji:</p>
                     <button class="sticker" onclick="addSticker('😜')">😜</button>
                     <button class="sticker" onclick="addSticker('😍')">😍</button>
                     <button class="sticker" onclick="addSticker('😎')">😎</button>
