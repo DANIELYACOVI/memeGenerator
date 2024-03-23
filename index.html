@@ -45,19 +45,18 @@
                 <li onclick="onKeywordClick('Dog')">Dog</li>
             </ul>
         </div>
-
+        
         <div id="gallery"></div>
-
         <div class="container">
             <div id="editor" style="display: none;">
                 <label for="color">Text Color:</label>
                 <input type="color" id="color-picker">
                 <input type="text" id="text-input" placeholder="Enter your text here">
-                <button class="line-actions" onclick="increaseFontSize()"><i class="fa-solid fa-plus"></i></button>
-                <button class="line-actions" onclick="decreaseFontSize()"><i class="fa-solid fa-minus"></i></button>
+                <button class="line-actions" onclick="increaseFontSize()"><i class="fa-solid fa-font"></i>+</button>
+                <button class="line-actions" onclick="decreaseFontSize()"><i class="fa-solid fa-font"></i>-</button>
                 <div>
-                    <button class="line-actions" onclick="addNewLine()">Add Line</button>
-                    <button class="line-actions" onclick="switchLine()">Switch Line</button>
+                    <button class="line-actions" onclick="addNewLine()"><i class="fa-solid fa-plus"></i></button>
+                    <button class="line-actions" onclick="switchLine()"><i class="fa-solid fa-repeat"></i></button>
                     <button class="deleteLine" onclick="deleteLine()"><i class="fa-regular fa-trash-can"></i></button>
                 </div>
                 <div id="stickers">
@@ -67,8 +66,13 @@
                     <button class="sticker" onclick="addSticker('🤩')">🤩</button>
                     <button class="sticker" onclick="addSticker('🤯')">🤯</button>
                     <button class="sticker" onclick="addSticker('🤓')">🤓</button>
+                    <button class="sticker" onclick="addSticker('🤪')">🤪</button>
                     <button class="sticker" onclick="addSticker('🕶️')">🕶️</button>
                     <button class="sticker" onclick="addSticker('❤️')">❤️</button>
+                    <button class="sticker" onclick="addSticker('✨')">✨</button>
+                    <button class="sticker" onclick="addSticker('💥')">💥</button>
+                    <button class="sticker" onclick="addSticker('🌈')">🌈</button>
+                    <button class="sticker" onclick="addSticker('⚡️')">⚡️</button>
                 </div>
                 <div class="save-meme">
                     <button id="save" onclick="onSave()">Save</button>
@@ -77,6 +81,7 @@
                 </div>
                 <div class="share-memes">
                     <button class="share-btn" onclick="shareToFacebook()"><i class="fa-brands fa-facebook"></i></button>
+                    <button class="share-btn" onclick="shareToTwitter()"><i class="fa-brands fa-twitter"></i></button>
                     <button class="share-btn" onclick="shareToInstagram()"><i
                             class="fa-brands fa-instagram"></i></button>
                 </div>
