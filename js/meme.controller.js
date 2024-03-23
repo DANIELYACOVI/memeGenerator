@@ -118,6 +118,10 @@ colorPicker.addEventListener('change', function () {
   updateColor(this.value)
 })
 
+document.getElementById('color-picker-icon').addEventListener('click', function () {
+  document.getElementById('color-picker').click()
+})
+
 function deleteLine() {
   onDeleteLine()
   renderMeme()

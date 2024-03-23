@@ -45,6 +45,10 @@
     cursor: pointer;
 }
 
+.fa-fill-drip {
+    cursor: pointer;
+}
+
 .save-meme {
     margin-top: 20px;
     display: flex;
@@ -88,7 +92,7 @@
     border: none;
     text-decoration: none;
     display: block;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 #download {
