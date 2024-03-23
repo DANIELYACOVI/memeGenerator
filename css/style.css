@@ -1,7 +1,9 @@
 @import url(basic/base.css);
 @import url(components/main-header.css);
+@import url(components/main-footer.css);
 @import url(gallery.css);
 @import url(edit-memes.css);
 @import url(savedmemes.css);
 @import url(randomized.css);
+@import url(typo/fonts.css);
 @import url(setup/mq.css);

@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1 id="title" data-trans="title">Meme Generator</h1>
+        <h1 id="title" data-trans="title">M<span class="red dot"> • </span>e<span class="yellow dot"> • </span>m<span class="blue dot"> • </span>e<span class="red dot"> • </span> Generator</h1>
         <div class="lang">
             <select onchange="onSetLang(this.value)">
                 <option value="english">🇬🇧 English</option>
@@ -55,9 +55,9 @@
                 <button class="line-actions" onclick="increaseFontSize()"><i class="fa-solid fa-font"></i>+</button>
                 <button class="line-actions" onclick="decreaseFontSize()"><i class="fa-solid fa-font"></i>-</button>
                 <div>
-                    <button class="line-actions" onclick="addNewLine()"><i class="fa-solid fa-plus"></i></button>
-                    <button class="line-actions" onclick="switchLine()"><i class="fa-solid fa-repeat"></i></button>
-                    <button class="deleteLine" onclick="deleteLine()"><i class="fa-regular fa-trash-can"></i></button>
+                    <button class="line-actions" onclick="addNewLine()" title="Add line"><i class="fa-solid fa-plus"></i></button>
+                    <button class="line-actions" onclick="switchLine()" title="Switch line"><i class="fa-solid fa-repeat"></i></button>
+                    <button class="deleteLine" onclick="deleteLine()" title="Delete line"><i class="fa-regular fa-trash-can"></i></button>
                 </div>
                 <div id="stickers">
                     <button class="sticker" onclick="addSticker('😜')">😜</button>
@@ -124,6 +124,15 @@
 
         <canvas id="canvas-random"></canvas>
     </section>
+
+    <footer class="main-footer full">
+        <div class="footer-content">
+            <div class="logo-footer">M<span class="red dot"> • </span>e<span class="yellow dot"> • </span>m<span class="blue dot"> • </span>e<span class="red dot"> • </span> Generator</div>
+            <small>
+                2024   Daniel Yacovi - @All Rights Reserved
+            </small>
+        </div>
+    </footer>
 
     <script src="js/service/util.js"></script>
     <script src="js/service/localstorage.service.js"></script>

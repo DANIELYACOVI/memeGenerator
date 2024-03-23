@@ -1,0 +1,22 @@
+footer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: column;
+    font-family: Shadows;
+}
+
+.main-footer {
+    height: 160px;
+    background-color: RGBA(248, 248, 248, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+small{
+    color: rgb(160, 159, 159);
+    font-family: Arial, Helvetica, sans-serif;
+}

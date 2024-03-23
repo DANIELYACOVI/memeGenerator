@@ -10,6 +10,7 @@ header {
 
 h1 {
     margin-inline-start: 10px;
+    font-family: Shadows;
 }
 
 #title {
@@ -47,3 +48,20 @@ nav li:hover,
 nav li.active {
     color: #bdbdbd;
 }
+
+.red{
+    color: red;
+}
+
+.yellow{
+    color: yellow;
+}
+
+.blue{
+    color: blue;
+}
+
+.dot {
+    font-size: 15px;
+    vertical-align: middle;
+  }
