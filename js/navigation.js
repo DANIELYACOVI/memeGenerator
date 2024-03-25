@@ -9,6 +9,8 @@ galleryTabs.forEach(tab => {
         document.getElementById('gallery-container').style.display = 'block'
         document.getElementById('saved-container').style.display = 'none'
         document.getElementById('random-container').style.display = 'none'
+
+        toggleMenu()
     })
 })
 
@@ -17,6 +19,8 @@ savedTabs.forEach(tab => {
         document.getElementById('gallery-container').style.display = 'none'
         document.getElementById('saved-container').style.display = 'block'
         document.getElementById('random-container').style.display = 'none'
+
+        toggleMenu()
     })
 })
 
@@ -25,11 +29,13 @@ randomTabs.forEach(tab => {
         document.getElementById('gallery-container').style.display = 'none'
         document.getElementById('saved-container').style.display = 'none'
         document.getElementById('random-container').style.display = 'block'
+
+        toggleMenu()
     })
 })
 
 function toggleMenu() {
-    var menuIcon = document.getElementById('menu-icon')
+    var menuIcon = document.querySelector('.menu-icon')
     var mainNav = document.querySelector('.main-nav')
     mainNav.classList.toggle('active')
     document.body.classList.toggle('menu-open')

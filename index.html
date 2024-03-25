@@ -22,17 +22,17 @@
             </select>
         </div>
     </header>
+    
+    <nav class="main-nav">
+        <li class="gallery-tab" data-trans="gallery">Gallery</li>
+        <li class="saved-tab" data-trans="saved">Saved</li>
+        <li class="random-tab" data-trans="random">Random</li>
+    </nav>
+    <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
+        <i class="fas fa-bars menu-icon"></i>
+    </button>
 
     <section id="gallery-container">
-        <nav class="main-nav">
-            <li class="gallery-tab" data-trans="gallery">Gallery</li>
-            <li class="saved-tab" data-trans="saved">Saved</li>
-            <li class="random-tab" data-trans="random">Random</li>
-        </nav>
-        <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
-            <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
-
         <div class="search-container">
             <input id="search" list="meme-type" type="text" placeholder="Search..." oninput="onSearchMems(this.value)"
                 data-trans="search">
@@ -105,29 +105,10 @@
     </section>
 
     <section id="saved-container" style="display: none;">
-
-        <nav class="main-nav">
-            <li class="gallery-tab" data-trans="gallery">Gallery</li>
-            <li class="saved-tab" data-trans="saved">Saved</li>
-            <li class="random-tab" data-trans="random">Random</li>
-        </nav>
-        <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
-            <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
-
         <div id="saved-memes-container"></div>
     </section>
 
     <section id="random-container" style="display: none;">
-        <nav class="main-nav">
-            <li class="gallery-tab" data-trans="gallery">Gallery</li>
-            <li class="saved-tab" data-trans="saved">Saved</li>
-            <li class="random-tab" data-trans="random">Random</li>
-        </nav>
-        <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">
-            <i class="fas fa-bars" id="menu-icon"></i>
-        </button>
-
         <button id="randomMemeBtn">Random Meme ✨</button>
 
         <canvas id="canvas-random"></canvas>
