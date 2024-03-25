@@ -50,6 +50,13 @@ document.addEventListener("DOMContentLoaded", function () {
     generateRandomMeme()
 
     randomMemeBtn.addEventListener('click', function () {
-        generateRandomMeme()
+        randomMemeBtn.textContent = 'Generating...'
+        randomMemeBtn.disabled = true
+
+        setTimeout(() => {
+            generateRandomMeme()
+            randomMemeBtn.textContent = 'Random Meme ✨'
+            randomMemeBtn.disabled = false
+        }, 1000)
     })
 })
